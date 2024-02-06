@@ -1,10 +1,8 @@
-import { View, Text,Image,TextInput, ActivityIndicator} from 'react-native'
+import { View, Text , SafeAreaView,Image} from 'react-native'
 import React, { useLayoutEffect } from 'react'
-import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Logo from "../assets/Logo.png"
-import Search from "../assets/Search.png"
-import {ChevronDownIcon,UserIcon,SearchIcon} from "react-native-heroicons/outline"
+import { useNavigation } from '@react-navigation/native'
+import GoalsLogo from "../assets/GoalsLogo.png"
+
 
 
 export default function Header (props) {
@@ -18,33 +16,20 @@ export default function Header (props) {
   },[])
 
   return (
-    <SafeAreaView className="bg-red-4 p-3 pt-5 ">
+    <SafeAreaView className="bg-red-40 p-5 mt-11 flex-row justify-center ">
 
-      <View className="flex-row justify-between">
-
-         <View className="flex-row items-cente gap-2">
-            <Image source={Logo}  className="w-11 h-11" />
-            <View>
-               <Text className="text-gray-500">username</Text>
-               <Text className="text-lg font-bold ">baby name <Text>💕</Text></Text>
+         <View className="flex-row items-center  gap-1 ">
+            <View className="flex-row gap-1">
+               <Text className="text-lg font-medium">10</Text>
+               <Text className="text-lg">/</Text>
+               <Text className="text-lg font-medium">10</Text>
             </View>
+
+            <Text className="text-xl">⚡</Text>
          </View>
 
-         <View className="flex-row text-md scale-125 items-center mr-2 gap-1">
-            <Text>
-               <Text>10</Text>
-               /
-               <Text>10</Text>
-            </Text>
-
-            <Text>⚡</Text>
-         </View>
-
-      </View>
-
-      {props.children}
-
-
+   
     </SafeAreaView>
+
   )
 }
