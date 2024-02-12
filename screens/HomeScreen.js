@@ -1,57 +1,39 @@
-import { View, Text,Animated} from 'react-native'
+import { View, Text,Animated,ScrollView} from 'react-native'
 import Header from './Header'
-import GoalBox from '../components/GoalBox'
-import VerticalScroll from '../components/VericalScroll'
-import { useRef } from 'react'
+import Footer from './Footer'
+import Body from './Body'
+import Overlay from '../components/Overlay'
+import CreateNoteScroller from '../components/CreateNoteScroller'
+import AddNoteBtn from '../components/AddNoteBtn'
+import { useSelector } from 'react-redux'
+import CreateNote from '../components/CreateNote'
+
+
+
+
 
 
 
 
 export default function HomeScreen() {
 
- 
-  
+   const notes = useSelector(state => state.note.notes)
 
 
    return ( 
-      <View className="overflow-visible">
-         <VerticalScroll>
+         <View className="overflow-visible bg-blue-90 h-full relative">
 
-         <Header/>
-         {/* <CreateButton/> */}
-         {/* <Quote/> */}
+            <Header/>
+            <Body/>
+            <Footer/>
+            <Overlay>
+               <CreateNoteScroller>
+                  {notes.map((el,i) => <CreateNote key={i} num={el}/>)}
+                  <AddNoteBtn/>
+               </CreateNoteScroller>
+            </Overlay>
 
-         
-       
-
-         <View  className="items-center bg-gray-20 p-2 px-7 mt-2" >
-            <Text className="text-md font-medium">Some are born great, some achieve greatness, and some have greatness thrust upon them</Text>
-            <Text className="text-gray-400 font-semibold mt-2 ">~ shakespeare</Text>
          </View>
-
-      
-        <View className="mt-4">
-
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-            <GoalBox/>
-      
-        </View>
-
-         </VerticalScroll>
-      </View>
    )
   
 }
